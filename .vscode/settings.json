@@ -1,0 +1,9 @@
+{
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#0F3506",
+        "titleBar.activeBackground": "#144B08",
+        "titleBar.activeForeground": "#F1FDEE"
+    },
+    "foam.openDailyNote.directory": "D:Desktop/diploma project/log",
+    "Notes.notesLocation": "D:Desktop/diploma project/log",
+}
