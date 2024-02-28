@@ -12,6 +12,8 @@
 #include <TFT_eSPI.h>
 #include <CST816S.h>
 #include <lvgl.h>
+#include <ui_pages/ui.h>
+#include <main.h>
 
 CST816S touch(21, 22, 5, 32); // sda, scl, rst, irq
 
@@ -109,11 +111,13 @@ void Task_lvgl(void *pvParameters)
     lv_indev_drv_register(&indev_drv);
 
     /*编写代码*/
-    lv_example_get_started_1();
+    // lv_example_get_started_1();
+    ui_init();
 
-    for(;;)
+    for (;;)
     {
+        ui_SrceenHome_load_date();
         lv_timer_handler();
-        vTaskDelay(5);
+        vTaskDelay(50);
     }
 }
