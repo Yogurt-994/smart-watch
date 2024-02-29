@@ -347,7 +347,11 @@ void ui_SrceenHome_load_date(void)
 {
     lv_label_set_text(ui_LabelHour, cstr_hour);
     lv_label_set_text(ui_LabelMinute, cstr_minute);
-    lv_label_set_text(ui_LabelWeek,cstr_week);
-    lv_label_set_text(ui_LabelDate,cstr_date);
+    lv_label_set_text(ui_LabelWeek, cstr_week);
+    lv_label_set_text(ui_LabelDate, cstr_date);
+
+    lv_label_set_text(ui_LabelTem, cstr_tem);
+    lv_label_set_text(ui_LabelHum, cstr_hum);
+    lv_label_set_text(ui_LabelAQI,cstr_aqi);
     lv_scr_load(ui_ScreenHome);
 }

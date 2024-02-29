@@ -19,7 +19,10 @@ extern const char *cstr_hour;
 extern const char *cstr_minute;
 extern const char *cstr_week;
 extern const char *cstr_date;
-// extern const char* cstr_combinedTime;
+
+extern const char *cstr_tem;
+extern const char *cstr_hum;
+extern const char *cstr_aqi;
 
 void Wifi_Connect();
 void Task_Wifi(void *pvParameters);
