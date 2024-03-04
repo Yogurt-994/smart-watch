@@ -54,5 +54,6 @@
         "streambuf": "cpp",
         "cinttypes": "cpp",
         "typeinfo": "cpp"
-    }
+    },
+    "cmake.sourceDirectory": "D:/Desktop/diploma project/Firmware/lib/ArduinoJson"
 }

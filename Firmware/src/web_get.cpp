@@ -8,6 +8,8 @@ WiFiUDP ntpUDP;
 NTPClient timeClient(ntpUDP, "ntp.aliyun.com", 8 * 3600, 60000);
 
 // time
+int time_hour;
+int time_minute;
 std::string _time_hour, _time_minute;
 const char *cstr_hour;
 const char *cstr_minute;
@@ -18,6 +20,16 @@ const char *cstr_date;
 std::string week[7] = {"Mon", "Tue.", "Wed.", "Thu.", "Fri.", "Sat.", "Sun"};
 const char *cstr_week;
 
+// time weather
+const char *cstr_wea_hour1;
+const char *cstr_wea_hour2;
+const char *cstr_wea_hour3;
+const char *cstr_wea_hour4;
+const char *cstr_wea_tem_hour1;
+const char *cstr_wea_tem_hour2;
+const char *cstr_wea_tem_hour3;
+const char *cstr_wea_tem_hour4;
+
 // 心知天气api
 // String apikey = "SCip88i9pJcY90FZ0";
 String apikey = "SzP5qUH8j8QEPdl7a";
@@ -25,6 +37,7 @@ String cityid = "wuhan";
 
 DynamicJsonDocument docWeather(1000);
 DynamicJsonDocument docAir(1000);
+DynamicJsonDocument docWeaHour(1000);
 
 char *location;
 char *weather;
@@ -91,17 +104,35 @@ void get_xinzhi_weather()
     char humidity[5];    // 湿度
     char aqi[5];
 
+    char wea_hour1[20];
+    char wea_hour2[20];
+    char wea_hour3[20];
+    char wea_hour4[20];
+    char wea_tem_hour1[4];
+    char wea_tem_hour2[4];
+    char wea_tem_hour3[4];
+    char wea_tem_hour4[4];
+
     String weatherUrl = "https://api.seniverse.com/v3/weather/now.json?key=";
     weatherUrl += apikey;
     weatherUrl += "&location=";
     weatherUrl += cityid;
-    weatherUrl += "&language=zh-Hans&unit=c";
+    weatherUrl += "&language=en&unit=c";
 
     String airUrl = "https://api.seniverse.com/v3/air/now.json?key=";
     airUrl += apikey;
     airUrl += "&location=";
     airUrl += cityid;
-    airUrl += "&language=zh-Hans&scope=city";
+    airUrl += "&language=en&scope=city";
+
+    String weaHourUrl = "https://api.seniverse.com/v3/weather/hourly.json?key=";
+    weaHourUrl += apikey;
+    weaHourUrl += "&location=";
+    weaHourUrl += cityid;
+    weaHourUrl += "&language=en&unit=c&start=";
+    weaHourUrl += time_hour + 1;
+    weaHourUrl += "&hours=";
+    weaHourUrl += time_hour + 4;
 
     HTTPClient http;
     http.begin(weatherUrl); // HTTP begin
@@ -149,6 +180,47 @@ void get_xinzhi_weather()
     else
     {
         Serial.printf("HTTP Get Error: %s\n", http.errorToString(http2Code).c_str());
+    }
+    http.end();
+
+    http.begin(weaHourUrl);
+    int http3Code = http.GET();
+    if (http3Code > 0)
+    {
+        String resBuff3 = http.getString();
+        // Serial.println(resBuff3);
+        deserializeJson(docWeaHour, resBuff3); // 开始使用Json解析
+
+        strcpy(wea_hour1, docWeaHour["results"][0]["hourly"][0]["text"]);
+        strcpy(wea_hour2, docWeaHour["results"][0]["hourly"][1]["text"]);
+        strcpy(wea_hour3, docWeaHour["results"][0]["hourly"][2]["text"]);
+        strcpy(wea_hour4, docWeaHour["results"][0]["hourly"][3]["text"]);
+        cstr_wea_hour1 = wea_hour1;
+        cstr_wea_hour2 = wea_hour2;
+        cstr_wea_hour3 = wea_hour3;
+        cstr_wea_hour4 = wea_hour4;
+
+        strcpy(wea_tem_hour1, docWeaHour["results"][0]["hourly"][0]["temperature"]);
+        strcat(wea_tem_hour1, "°");
+        cstr_wea_tem_hour1 = wea_tem_hour1;
+        strcpy(wea_tem_hour2, docWeaHour["results"][0]["hourly"][1]["temperature"]);
+        strcat(wea_tem_hour2, "°");
+        cstr_wea_tem_hour2 = wea_tem_hour2;
+        strcpy(wea_tem_hour3, docWeaHour["results"][0]["hourly"][2]["temperature"]);
+        strcat(wea_tem_hour3, "°");
+        cstr_wea_tem_hour3 = wea_tem_hour3;
+        strcpy(wea_tem_hour4, docWeaHour["results"][0]["hourly"][3]["temperature"]);
+        strcat(wea_tem_hour4, "°");;
+        cstr_wea_tem_hour4 = wea_tem_hour4;
+        // 测试
+        Serial.printf("wea_hour1:%s", wea_tem_hour1);
+        Serial.printf("wea_hour2:%s", wea_tem_hour2);
+        Serial.printf("wea_hour2:%s", wea_tem_hour3);
+        Serial.printf("wea_hour2:%s", wea_tem_hour4);
+    }
+    else
+    {
+        Serial.printf("HTTP Get Error: %s\n", http.errorToString(http3Code).c_str());
     }
     http.end();
 }

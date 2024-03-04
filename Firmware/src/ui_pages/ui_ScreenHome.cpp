@@ -341,9 +341,10 @@ void ui_ScreenHome_screen_init(void)
     lv_obj_add_event_cb(ui_ArcTem, ui_event_ArcTem, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_ArcHum, ui_event_ArcHum, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_ArcAQI, ui_event_ArcAQI, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_ScreenHome, ui_event_ScreenHome, LV_EVENT_ALL, NULL);
 }
 
-void ui_SrceenHome_load_date(void)
+void ui_SrceenHome_load_data(void)
 {
     lv_label_set_text(ui_LabelHour, cstr_hour);
     lv_label_set_text(ui_LabelMinute, cstr_minute);
@@ -352,6 +353,6 @@ void ui_SrceenHome_load_date(void)
 
     lv_label_set_text(ui_LabelTem, cstr_tem);
     lv_label_set_text(ui_LabelHum, cstr_hum);
-    lv_label_set_text(ui_LabelAQI,cstr_aqi);
+    lv_label_set_text(ui_LabelAQI, cstr_aqi);
     lv_scr_load(ui_ScreenHome);
 }

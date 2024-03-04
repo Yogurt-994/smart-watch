@@ -111,13 +111,23 @@ void Task_lvgl(void *pvParameters)
     lv_indev_drv_register(&indev_drv);
 
     /*编写代码*/
-    // lv_example_get_started_1();
     ui_init();
 
     for (;;)
     {
-        ui_SrceenHome_load_date();
-        lv_timer_handler();
+        lv_obj_t *current_screen = lv_scr_act();
+        if (current_screen == ui_ScreenHome)
+        {
+            ui_SrceenHome_load_data();
+        }
+        else if (current_screen == ui_ScreenMenu)
+        {
+        }
+        else if (current_screen == ui_ScreenWeather)
+        {
+            ui_SrceenWeather_load_data();
+        }
+        lv_task_handler();
         vTaskDelay(50);
     }
 }

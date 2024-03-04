@@ -24,6 +24,15 @@ extern const char *cstr_tem;
 extern const char *cstr_hum;
 extern const char *cstr_aqi;
 
+extern const char *cstr_wea_hour1;
+extern const char *cstr_wea_hour2;
+extern const char *cstr_wea_hour3;
+extern const char *cstr_wea_hour4;
+extern const char *cstr_wea_tem_hour1;
+extern const char *cstr_wea_tem_hour2;
+extern const char *cstr_wea_tem_hour3;
+extern const char *cstr_wea_tem_hour4;
+
 void Wifi_Connect();
 void Task_Wifi(void *pvParameters);
 
