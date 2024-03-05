@@ -18,7 +18,7 @@ void ui_ScreenWeather_screen_init(void)
     lv_obj_set_x(ui_PanelBase, 0);
     lv_obj_set_y(ui_PanelBase, -71);
     lv_obj_set_align(ui_PanelBase, LV_ALIGN_CENTER);
-    lv_obj_clear_flag(ui_PanelBase, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_clear_flag(ui_PanelBase, LV_OBJ_FLAG_SCROLLABLE); /// Flags
     lv_obj_set_style_bg_color(ui_PanelBase, lv_color_hex(0x000000), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_bg_opa(ui_PanelBase, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
 
@@ -39,8 +39,8 @@ void ui_ScreenWeather_screen_init(void)
     lv_obj_set_x(ui_ImageLocation, 51);
     lv_obj_set_y(ui_ImageLocation, -46);
     lv_obj_set_align(ui_ImageLocation, LV_ALIGN_CENTER);
-    lv_obj_add_flag(ui_ImageLocation, LV_OBJ_FLAG_ADV_HITTEST);     /// Flags
-    lv_obj_clear_flag(ui_ImageLocation, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_add_flag(ui_ImageLocation, LV_OBJ_FLAG_ADV_HITTEST);  /// Flags
+    lv_obj_clear_flag(ui_ImageLocation, LV_OBJ_FLAG_SCROLLABLE); /// Flags
 
     ui_LabelTemp = lv_label_create(ui_PanelBase);
     lv_obj_set_width(ui_LabelTemp, 57);
@@ -53,16 +53,16 @@ void ui_ScreenWeather_screen_init(void)
     lv_obj_set_style_text_font(ui_LabelTemp, &lv_font_montserrat_32, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_LabelDegree = lv_label_create(ui_PanelBase);
-    lv_obj_set_width(ui_LabelDegree, LV_SIZE_CONTENT);   /// 1
-    lv_obj_set_height(ui_LabelDegree, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_width(ui_LabelDegree, LV_SIZE_CONTENT);  /// 1
+    lv_obj_set_height(ui_LabelDegree, LV_SIZE_CONTENT); /// 1
     lv_obj_set_x(ui_LabelDegree, 31);
     lv_obj_set_y(ui_LabelDegree, -14);
     lv_obj_set_align(ui_LabelDegree, LV_ALIGN_CENTER);
     lv_label_set_text(ui_LabelDegree, "°C");
 
     ui_LabelSplit = lv_label_create(ui_PanelBase);
-    lv_obj_set_width(ui_LabelSplit, LV_SIZE_CONTENT);   /// 1
-    lv_obj_set_height(ui_LabelSplit, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_width(ui_LabelSplit, LV_SIZE_CONTENT);  /// 1
+    lv_obj_set_height(ui_LabelSplit, LV_SIZE_CONTENT); /// 1
     lv_obj_set_x(ui_LabelSplit, -2);
     lv_obj_set_y(ui_LabelSplit, 43);
     lv_obj_set_align(ui_LabelSplit, LV_ALIGN_CENTER);
@@ -92,7 +92,7 @@ void ui_ScreenWeather_screen_init(void)
     lv_obj_set_x(ui_PanelWeaTimePre, 0);
     lv_obj_set_y(ui_PanelWeaTimePre, 52);
     lv_obj_set_align(ui_PanelWeaTimePre, LV_ALIGN_CENTER);
-    lv_obj_clear_flag(ui_PanelWeaTimePre, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_clear_flag(ui_PanelWeaTimePre, LV_OBJ_FLAG_SCROLLABLE); /// Flags
     lv_obj_set_style_bg_color(ui_PanelWeaTimePre, lv_color_hex(0x000000), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_bg_opa(ui_PanelWeaTimePre, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
 
@@ -210,13 +210,13 @@ void ui_ScreenWeather_screen_init(void)
     lv_obj_set_x(ui_PanelWeaDayPre, 0);
     lv_obj_set_y(ui_PanelWeaDayPre, 161);
     lv_obj_set_align(ui_PanelWeaDayPre, LV_ALIGN_CENTER);
-    lv_obj_clear_flag(ui_PanelWeaDayPre, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_clear_flag(ui_PanelWeaDayPre, LV_OBJ_FLAG_SCROLLABLE); /// Flags
     lv_obj_set_style_bg_color(ui_PanelWeaDayPre, lv_color_hex(0x000000), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_bg_opa(ui_PanelWeaDayPre, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_LabelYesterday = lv_label_create(ui_PanelWeaDayPre);
-    lv_obj_set_width(ui_LabelYesterday, LV_SIZE_CONTENT);   /// 1
-    lv_obj_set_height(ui_LabelYesterday, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_width(ui_LabelYesterday, LV_SIZE_CONTENT);  /// 1
+    lv_obj_set_height(ui_LabelYesterday, LV_SIZE_CONTENT); /// 1
     lv_obj_set_x(ui_LabelYesterday, -73);
     lv_obj_set_y(ui_LabelYesterday, -37);
     lv_obj_set_align(ui_LabelYesterday, LV_ALIGN_CENTER);
@@ -242,8 +242,8 @@ void ui_ScreenWeather_screen_init(void)
     lv_obj_set_style_text_align(ui_LabelYesTem, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_LabelToday = lv_label_create(ui_PanelWeaDayPre);
-    lv_obj_set_width(ui_LabelToday, LV_SIZE_CONTENT);   /// 1
-    lv_obj_set_height(ui_LabelToday, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_width(ui_LabelToday, LV_SIZE_CONTENT);  /// 1
+    lv_obj_set_height(ui_LabelToday, LV_SIZE_CONTENT); /// 1
     lv_obj_set_x(ui_LabelToday, -72);
     lv_obj_set_y(ui_LabelToday, -6);
     lv_obj_set_align(ui_LabelToday, LV_ALIGN_CENTER);
@@ -251,8 +251,8 @@ void ui_ScreenWeather_screen_init(void)
     lv_obj_set_style_text_align(ui_LabelToday, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_LabelTomorrow = lv_label_create(ui_PanelWeaDayPre);
-    lv_obj_set_width(ui_LabelTomorrow, LV_SIZE_CONTENT);   /// 1
-    lv_obj_set_height(ui_LabelTomorrow, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_width(ui_LabelTomorrow, LV_SIZE_CONTENT);  /// 1
+    lv_obj_set_height(ui_LabelTomorrow, LV_SIZE_CONTENT); /// 1
     lv_obj_set_x(ui_LabelTomorrow, -73);
     lv_obj_set_y(ui_LabelTomorrow, 26);
     lv_obj_set_align(ui_LabelTomorrow, LV_ALIGN_CENTER);
@@ -296,23 +296,35 @@ void ui_ScreenWeather_screen_init(void)
     lv_obj_set_style_text_align(ui_LabelTomTem, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     lv_obj_add_event_cb(ui_ScreenWeather, ui_event_ScreenWeather, LV_EVENT_ALL, NULL);
-
 }
 
 void ui_SrceenWeather_load_data(void)
 {
     // lv_label_set_text(ui_LabelTime1)
-    lv_label_set_text(ui_LabelTimeWea1,cstr_wea_hour1);
-    lv_label_set_text(ui_LabelTimeWea2,cstr_wea_hour2);
-    lv_label_set_text(ui_LabelTimeWea3,cstr_wea_hour3);
-    lv_label_set_text(ui_LabelTimeWea4,cstr_wea_hour4);
+    lv_label_set_text(ui_LabelTemp, cstr_tem);
+    lv_label_set_text(ui_LabelWea, cstr_wea_hour1);
 
-    lv_label_set_text(ui_LabelDegree1,cstr_wea_tem_hour1);
-    lv_label_set_text(ui_LabelDegree2,cstr_wea_tem_hour2);
-    lv_label_set_text(ui_LabelDegree3,cstr_wea_tem_hour3);
-    lv_label_set_text(ui_LabelDegree4,cstr_wea_tem_hour4);
+    lv_label_set_text(ui_LabelTime1, cstr_hour1);
+    lv_label_set_text(ui_LabelTime2, cstr_hour2);
+    lv_label_set_text(ui_LabelTime3, cstr_hour3);
+    lv_label_set_text(ui_LabelTime4, cstr_hour4);
+
+    lv_label_set_text(ui_LabelTimeWea1, cstr_wea_hour1);
+    lv_label_set_text(ui_LabelTimeWea2, cstr_wea_hour2);
+    lv_label_set_text(ui_LabelTimeWea3, cstr_wea_hour3);
+    lv_label_set_text(ui_LabelTimeWea4, cstr_wea_hour4);
+
+    lv_label_set_text(ui_LabelDegree1, cstr_wea_tem_hour1);
+    lv_label_set_text(ui_LabelDegree2, cstr_wea_tem_hour2);
+    lv_label_set_text(ui_LabelDegree3, cstr_wea_tem_hour3);
+    lv_label_set_text(ui_LabelDegree4, cstr_wea_tem_hour4);
+
+    // lv_label_set_text(ui_LabelYesWea,cstr_wea_day0);
+    // // lv_label_set_text(ui_LabelYesTem,cstr_wea_day_tem0);
+    // lv_label_set_text(ui_LabelTodayWea,cstr_wea_day1);
+    // // lv_label_set_text(ui_LabelTodayTem,cstr_wea_day_tem1);
+    // lv_label_set_text(ui_LabelTomWea,cstr_wea_day2);
+    // // lv_label_set_text(ui_LabelTomTem,cstr_wea_day_tem2);
 
     lv_scr_load(ui_ScreenWeather);
-
-
 }
