@@ -26,7 +26,6 @@
 #define ACTIVE_X            1             //最活跃轴是X
 #define ACTIVE_Y            2             //最活跃轴是Y
 #define ACTIVE_Z            3             //最活跃轴是Z
-// uint8_t most_active_axis = ACTIVE_NULL;   //记录最活跃轴
 
 extern uint32_t step;
 

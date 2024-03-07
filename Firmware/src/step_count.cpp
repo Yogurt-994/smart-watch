@@ -10,8 +10,8 @@
  */
 #include <MPU6050_tockn.h>
 #include <Wire.h>
-#include "step_count.h"
 #include <algorithm>
+#include "step_count.h"
 
 MPU6050 mpu6050(Wire);
 uint16_t step_count = 0;
@@ -34,7 +34,7 @@ typedef struct
 peak_value_t peak_value;
 
 /**
- * @brief
+ * @brief 测试用
  *
  * @return true
  * @return false
@@ -207,7 +207,7 @@ void which_is_active(void)
 }
 
 /**
- * @brief 计步程序
+ * @brief 计步
  *
  */
 void detect_step(void)
@@ -276,6 +276,11 @@ void step_count_callback(TimerHandle_t pxTimer)
     }
 }
 
+/**
+ * @brief mpu6050进程
+ * 
+ * @param pvParameters 
+ */
 void Task_MPU6050(void *pvParameters)
 {
     (void)pvParameters;
@@ -290,43 +295,44 @@ void Task_MPU6050(void *pvParameters)
         xTimerStart(step_timer, 0);
         for (;;)
         {
-            // mpu6050.update();
-            // Serial.println("=======================================================");
-            // // Serial.print(step);
-            // // Serial.print("temp : ");
-            // // Serial.println(mpu6050.getTemp());
-            // // Serial.print("accX : ");
-            // // Serial.print(mpu6050.getAccX());
-            // // Serial.print("\taccY : ");
-            // // Serial.print(mpu6050.getAccY());
-            // // Serial.print("\taccZ : ");
-            // // Serial.println(mpu6050.getAccZ());
+            // 测试
+            //  mpu6050.update();
+            //  Serial.println("=======================================================");
+            //  Serial.print(step);
+            //  Serial.print("temp : ");
+            //  Serial.println(mpu6050.getTemp());
+            //  Serial.print("accX : ");
+            //  Serial.print(mpu6050.getAccX());
+            //  Serial.print("\taccY : ");
+            //  Serial.print(mpu6050.getAccY());
+            //  Serial.print("\taccZ : ");
+            //  Serial.println(mpu6050.getAccZ());
 
             // Serial.print("gyroX : ");
             // Serial.print(mpu6050.getGyroX());
             // Serial.print("\tgyroY : ");
             // Serial.print(mpu6050.getGyroY());
             // Serial.print("accAngleX : ");
-            // // Serial.print(mpu6050.getAccAngleX());
-            // // Serial.print("\taccAngleY : ");
-            // // Serial.println(mpu6050.getAccAngleY());
+            // Serial.print(mpu6050.getAccAngleX());
+            // Serial.print("\taccAngleY : ");
+            // Serial.println(mpu6050.getAccAngleY());
 
             // Serial.print("\tgyroZ : ");
             // Serial.println(mpu6050.getGyroZ());
 
-            // // Serial.print("gyroAngleX : ");
-            // // Serial.print(mpu6050.getGyroAngleX());
-            // // Serial.print("\tgyroAngleY : ");
-            // // Serial.print(mpu6050.getGyroAngleY());
-            // // Serial.print("\tgyroAngleZ : ");
-            // // Serial.println(mpu6050.getGyroAngleZ());
+            // Serial.print("gyroAngleX : ");
+            // Serial.print(mpu6050.getGyroAngleX());
+            // Serial.print("\tgyroAngleY : ");
+            // Serial.print(mpu6050.getGyroAngleY());
+            // Serial.print("\tgyroAngleZ : ");
+            // Serial.println(mpu6050.getGyroAngleZ());
 
-            // // Serial.print("angleX : ");
-            // // Serial.print(mpu6050.getAngleX());
-            // // Serial.print("\tangleY : ");
-            // // Serial.print(mpu6050.getAngleY());
-            // // Serial.print("\tangleZ : ");
-            // // Serial.println(mpu6050.getAngleZ());
+            // Serial.print("angleX : ");
+            // Serial.print(mpu6050.getAngleX());
+            // Serial.print("\tangleY : ");
+            // Serial.print(mpu6050.getAngleY());
+            // Serial.print("\tangleZ : ");
+            // Serial.println(mpu6050.getAngleZ());
             // Serial.println("=======================================================\n");
             vTaskDelay(1000);
         }

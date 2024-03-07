@@ -299,6 +299,11 @@ void get_xinzhi_weather()
     // http.end();
 }
 
+/**
+ * @brief wifi进程
+ * 
+ * @param pvParameters 
+ */
 void Task_Wifi(void *pvParameters)
 {
     (void)pvParameters;

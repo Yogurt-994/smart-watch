@@ -82,6 +82,11 @@ void lv_example_get_started_1(void)
     lv_obj_center(label);
 }
 
+/**
+ * @brief lvgl进程
+ * 
+ * @param pvParameters 
+ */
 void Task_lvgl(void *pvParameters)
 {
     (void)pvParameters;
