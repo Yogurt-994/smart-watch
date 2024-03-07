@@ -33,7 +33,7 @@ extern lv_obj_t *ui_LabelWeek;
 extern lv_obj_t *ui_PanelStep;
 extern lv_obj_t *ui_ImageStep;
 extern lv_obj_t *ui_LabelStep;
-void ui_event_SliderStep( lv_event_t * e);
+// void ui_event_SliderStep( lv_event_t * e);
 extern lv_obj_t *ui_SliderStep;
 extern lv_obj_t *ui_PanelWeather;
 void ui_event_ArcTem( lv_event_t * e);

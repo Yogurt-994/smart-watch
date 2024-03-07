@@ -5,6 +5,8 @@
 
 #include "ui.h"
 #include "web_get.h"
+#include "step_count.h"
+#include "string"
 
 void ui_ScreenHome_screen_init(void)
 {
@@ -337,7 +339,7 @@ void ui_ScreenHome_screen_init(void)
     lv_obj_set_style_text_color(ui_LabelAQI, lv_color_hex(0x1AFA29), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_LabelAQI, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    lv_obj_add_event_cb(ui_SliderStep, ui_event_SliderStep, LV_EVENT_ALL, NULL);
+    // lv_obj_add_event_cb(ui_SliderStep, ui_event_SliderStep, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_ArcTem, ui_event_ArcTem, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_ArcHum, ui_event_ArcHum, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_ArcAQI, ui_event_ArcAQI, LV_EVENT_ALL, NULL);
@@ -354,5 +356,10 @@ void ui_SrceenHome_load_data(void)
     lv_label_set_text(ui_LabelTem, cstr_tem);
     lv_label_set_text(ui_LabelHum, cstr_hum);
     lv_label_set_text(ui_LabelAQI, cstr_aqi);
+
+    lv_slider_set_value(ui_SliderStep, step, LV_ANIM_OFF);
+    std::string str_step=std::to_string(step);
+    const char *charPtr_step=str_step.c_str();
+    lv_label_set_text(ui_LabelStep, charPtr_step);
     lv_scr_load(ui_ScreenHome);
 }

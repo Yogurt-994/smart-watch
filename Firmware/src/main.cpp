@@ -12,6 +12,7 @@
 
 TaskHandle_t Task_lvgl_Handle;
 TaskHandle_t Task_wifi_Handle;
+TaskHandle_t Task_mpu6050_Handle;
 
 void setup()
 {
@@ -22,11 +23,14 @@ void setup()
 #ifdef ESP32_ENABLE
     xTaskCreate(Task_lvgl, "Task_lvgl", 4096, NULL, 3, &Task_lvgl_Handle);
     xTaskCreate(Task_Wifi, "Task_Wifi", 4096, NULL, 4, &Task_wifi_Handle);
+    xTaskCreate(Task_MPU6050, "Task_MPU6050", 4096, NULL, 5, &Task_mpu6050_Handle);
 #else
     xTaskCreatePinnedToCore(
         Task_lvgl, "Task_lvgl", 4096, NULL, 3, &Task_lvgl_Handle, LVGL_RUNNING_CORE);
+    // xTaskCreatePinnedToCore(
+    //     Task_Wifi, "Task_Wifi", 4096, NULL, 4, &Task_wifi_Handle, ESP32_RUNNING_CORE);
     xTaskCreatePinnedToCore(
-        Task_Wifi, "Task_Wifi", 4096, NULL, 4, &Task_wifi_Handle, ESP32_RUNNING_CORE);
+        Task_MPU6050, "Task_MPU6050", 4096, NULL, 5, &Task_mpu6050_Handle, ESP32_RUNNING_CORE);
 #endif
 }
 

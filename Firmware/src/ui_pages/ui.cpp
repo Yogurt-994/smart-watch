@@ -113,15 +113,15 @@ void ui_event_ScreenHome(lv_event_t *e)
         _ui_screen_change(&ui_ScreenMenu, LV_SCR_LOAD_ANIM_MOVE_LEFT, 100, 0, &ui_ScreenMenu_screen_init);
     }
 }
-void ui_event_SliderStep(lv_event_t *e)
-{
-    lv_event_code_t event_code = lv_event_get_code(e);
-    lv_obj_t *target = lv_event_get_target(e);
-    if (event_code == LV_EVENT_VALUE_CHANGED)
-    {
-        _ui_arc_set_text_value(ui_LabelStep, target, "", "");
-    }
-}
+// void ui_event_SliderStep(lv_event_t *e)
+// {
+//     lv_event_code_t event_code = lv_event_get_code(e);
+//     lv_obj_t *target = lv_event_get_target(e);
+//     if (event_code == LV_EVENT_VALUE_CHANGED)
+//     {
+//         _ui_arc_set_text_value(ui_LabelStep, target, "", "");
+//     }
+// }
 void ui_event_ArcTem(lv_event_t *e)
 {
     lv_event_code_t event_code = lv_event_get_code(e);
