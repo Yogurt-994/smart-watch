@@ -61,11 +61,11 @@
                       },
                       {
                         "nid": -562071937,
-                        "flags": 51,
+                        "flags": 17,
                         "strtype": "OBJECT/Size",
                         "intarray": [
-                          1,
-                          1
+                          30,
+                          16
                         ],
                         "InheritedType": 7
                       },

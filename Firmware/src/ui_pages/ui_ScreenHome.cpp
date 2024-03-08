@@ -57,12 +57,13 @@ void ui_ScreenHome_screen_init(void)
     lv_obj_set_style_pad_bottom(ui_ArcElectric, 0, LV_PART_KNOB | LV_STATE_DEFAULT);
 
     ui_LabelElectric = lv_label_create(ui_ArcElectric);
-    lv_obj_set_width(ui_LabelElectric, LV_SIZE_CONTENT);  /// 1
-    lv_obj_set_height(ui_LabelElectric, LV_SIZE_CONTENT); /// 1
+    lv_obj_set_width(ui_LabelElectric, 40);  
+    lv_obj_set_height(ui_LabelElectric, 16); 
     lv_obj_set_x(ui_LabelElectric, 0);
     lv_obj_set_y(ui_LabelElectric, -2);
     lv_obj_set_align(ui_LabelElectric, LV_ALIGN_CENTER);
     lv_label_set_text(ui_LabelElectric, "50%");
+    lv_obj_set_style_text_align(ui_LabelElectric, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_LabelElectric, &lv_font_montserrat_14, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_ImageElectric = lv_img_create(ui_ArcElectric);
@@ -358,8 +359,17 @@ void ui_SrceenHome_load_data(void)
     lv_label_set_text(ui_LabelAQI, cstr_aqi);
 
     lv_slider_set_value(ui_SliderStep, step, LV_ANIM_OFF);
-    std::string str_step=std::to_string(step);
-    const char *charPtr_step=str_step.c_str();
+    std::string str_step = std::to_string(step);
+    const char *charPtr_step = str_step.c_str();
     lv_label_set_text(ui_LabelStep, charPtr_step);
+
+    std::string str_BATvalue_precent = std::to_string(BATvalue_precent)+"%";
+    const char *charPtr_BATvalue_precent = str_BATvalue_precent.c_str();
+    lv_label_set_text(ui_LabelElectric, charPtr_BATvalue_precent);
+    
+    // std::string str_BATvalue = std::to_string(BATvalue);
+    // const char *charPtr_BATvalue = str_BATvalue.c_str();
+    // lv_label_set_text(ui_LabelElectric, charPtr_BATvalue);
+
     lv_scr_load(ui_ScreenHome);
 }

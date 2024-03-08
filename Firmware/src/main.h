@@ -22,6 +22,8 @@
 #include "web_get.h"
 #include "step_count.h"
 
+#define ENABLE_BLE_KEY_BOARD
+
 #define LVGL_RUNNING_CORE     0
 #define ESP32_RUNNING_CORE    1
 

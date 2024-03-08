@@ -54,7 +54,8 @@
         "streambuf": "cpp",
         "cinttypes": "cpp",
         "typeinfo": "cpp",
-        "inv_mpu.h": "c"
+        "inv_mpu.h": "c",
+        "iostream": "cpp"
     },
     "cmake.sourceDirectory": "D:/Desktop/diploma project/Firmware/lib/ArduinoJson"
 }

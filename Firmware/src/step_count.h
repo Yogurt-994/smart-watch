@@ -29,6 +29,9 @@
 
 extern uint32_t step;
 
+extern int BATvalue;
+extern int BATvalue_precent;
+
 void Task_MPU6050(void *pvParameters);
 
 #endif

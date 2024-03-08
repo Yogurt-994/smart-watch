@@ -13,6 +13,11 @@
 #include <algorithm>
 #include "step_count.h"
 
+// 初始化电池电量检测端口
+const int BATpin = 39; // ADC，电压传感器
+int BATvalue = 0;      // 用于ADC采集的电压的变量
+int BATvalue_precent = 0;
+
 MPU6050 mpu6050(Wire);
 uint16_t step_count = 0;
 uint32_t step = 0;
@@ -257,6 +262,11 @@ void detect_step(void)
     }
 }
 
+/**
+ * @brief 计步 定时器回调函数
+ *
+ * @param pxTimer
+ */
 void step_count_callback(TimerHandle_t pxTimer)
 {
     static uint8_t step_time_count = 0;
@@ -277,9 +287,26 @@ void step_count_callback(TimerHandle_t pxTimer)
 }
 
 /**
+ * @brief 电池电量检测
+ *
+ */
+void batteryDetect()
+{
+    // 满 2400
+    // 低 1650
+    BATvalue = analogRead(BATpin); // 读取ADC电压采集值
+    // Serial.print(BATvalue);
+    BATvalue_precent = (BATvalue - 1650) * 100 / 750;
+    if (BATvalue_precent > 100)
+        BATvalue_precent = 100;
+    else if (BATvalue_precent <= 0)
+        BATvalue_precent = 0;
+    // Serial.print(BATvalue_precent);
+}
+/**
  * @brief mpu6050进程
- * 
- * @param pvParameters 
+ *
+ * @param pvParameters
  */
 void Task_MPU6050(void *pvParameters)
 {
@@ -288,6 +315,8 @@ void Task_MPU6050(void *pvParameters)
     mpu6050.begin();
     mpu6050.calcGyroOffsets(true);
 
+    pinMode(BATpin, INPUT);
+
     TimerHandle_t step_timer = xTimerCreate("Step_Timer", pdMS_TO_TICKS(50), pdTRUE, nullptr, step_count_callback);
     if (step_timer != nullptr)
     {
@@ -295,6 +324,8 @@ void Task_MPU6050(void *pvParameters)
         xTimerStart(step_timer, 0);
         for (;;)
         {
+            // BATvalue = analogRead(BATpin); // 读取ADC电压采集值
+            batteryDetect(); // 电量检测
             // 测试
             //  mpu6050.update();
             //  Serial.println("=======================================================");
@@ -334,7 +365,7 @@ void Task_MPU6050(void *pvParameters)
             // Serial.print("\tangleZ : ");
             // Serial.println(mpu6050.getAngleZ());
             // Serial.println("=======================================================\n");
-            vTaskDelay(1000);
+            vTaskDelay(5000);
         }
     }
 }

@@ -1,9 +1,4 @@
 {
     "cmake.configureOnOpen": true,
-    "cmake.buildDirectory": "${workspaceFolder}/build",
-    "workbench.colorCustomizations": {
-        "activityBar.background": "#58150F",
-        "titleBar.activeBackground": "#7C1E15",
-        "titleBar.activeForeground": "#FEFCFC"
-    }
+    "cmake.buildDirectory" : "${workspaceFolder}/build"
 }
