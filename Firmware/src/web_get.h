@@ -20,10 +20,17 @@ extern const char *cstr_minute;
 extern const char *cstr_week;
 extern const char *cstr_date;
 
+extern int year;
+extern int month;
+extern int day;
+
 extern const char *cstr_now_weather;
 extern const char *cstr_tem;
 extern const char *cstr_hum;
 extern const char *cstr_aqi;
+extern int int_tem;
+extern int int_hum;
+extern int int_aqi;
 
 // time weather
 extern const char *cstr_hour1;

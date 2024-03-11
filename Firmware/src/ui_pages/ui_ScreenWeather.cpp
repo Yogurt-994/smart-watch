@@ -319,12 +319,12 @@ void ui_SrceenWeather_load_data(void)
     lv_label_set_text(ui_LabelDegree3, cstr_wea_tem_hour3);
     lv_label_set_text(ui_LabelDegree4, cstr_wea_tem_hour4);
 
-    // lv_label_set_text(ui_LabelYesWea,cstr_wea_day0);
-    // // lv_label_set_text(ui_LabelYesTem,cstr_wea_day_tem0);
-    // lv_label_set_text(ui_LabelTodayWea,cstr_wea_day1);
-    // // lv_label_set_text(ui_LabelTodayTem,cstr_wea_day_tem1);
-    // lv_label_set_text(ui_LabelTomWea,cstr_wea_day2);
-    // // lv_label_set_text(ui_LabelTomTem,cstr_wea_day_tem2);
+    lv_label_set_text(ui_LabelYesWea,cstr_wea_day0);
+    lv_label_set_text(ui_LabelYesTem,cstr_wea_day_tem0);
+    lv_label_set_text(ui_LabelTodayWea,cstr_wea_day1);
+    lv_label_set_text(ui_LabelTodayTem,cstr_wea_day_tem1);
+    lv_label_set_text(ui_LabelTomWea,cstr_wea_day2);
+    lv_label_set_text(ui_LabelTomTem,cstr_wea_day_tem2);
 
     lv_scr_load(ui_ScreenWeather);
 }

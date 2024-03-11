@@ -9,8 +9,10 @@
  * 
  */
 #pragma once
+#include <Arduino.h>
 
 void ble_keyboard_init(void);
 bool check_keyboard_connected(void);
 void keyboard_enable_player(void);
 int keyboard_player_next(void);
+void Task_BLE(void *pvParamters);

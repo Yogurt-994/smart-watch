@@ -29,6 +29,7 @@ void ble_keyboard_init(void)
 bool check_keyboard_connected(void)
 {
 #ifdef ENABLE_BLE_KEY_BOARD
+    Serial.println("BLE Connected!");
     return bleKeyboard.isConnected();
 #else
     return false;
@@ -59,4 +60,50 @@ int keyboard_player_next(void)
     bleKeyboard.write(KEY_MEDIA_NEXT_TRACK);
 #endif
     return 0;
+}
+
+/**
+ * @brief ble进程
+ *
+ * @param pvParamters
+ */
+void Task_BLE(void *pvParamters)
+{
+    // (void)pvParamters;
+    // for (;;)
+    // {
+    //     // 等待事件位，只有 EVENT_BIT_TASK_BLE 被设置时才执行
+    //     bits_wifi_ble = xEventGroupWaitBits(switch_event_group, EVENT_BIT_TASK_BLE, pdTRUE, pdTRUE, portMAX_DELAY);
+
+    //     Serial.print(bits_wifi_ble);
+    //     Serial.print("\t ble");
+
+    //     WiFi.disconnect();
+    //     WiFi.mode(WIFI_OFF);
+    //     vTaskDelay(300);
+
+    //     ble_keyboard_init();
+    //     while (bits_wifi_ble == EVENT_BIT_TASK_BLE)
+    //     {
+    //         Serial.print("ble");
+    //         vTaskDelay(1000);
+    //     }
+    // }
+    // for (;;)
+    // {
+    //     if (isWifiOrBle == false)
+    //     {
+    //         Serial.print("ble");
+    //         ble_keyboard_init();
+    //         while(isWifiOrBle == false)
+    //         {
+    //             vTaskDelay(1000);
+    //         }
+    //     }
+    //     else
+    //     {
+    //         bleKeyboard.end();
+    //         vTaskDelay(1000);
+    //     }
+    // }
 }

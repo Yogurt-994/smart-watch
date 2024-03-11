@@ -275,13 +275,13 @@ void step_count_callback(TimerHandle_t pxTimer)
     step_time_count++;
     if (step_time_count >= 6) // 300ms
     {
-        Serial.print(step);
+        // Serial.print(step);
         step_time_count = 0;
         if (step_count != 0)
         {
             step_count = 0;
             step++;
-            Serial.print(step);
+            // Serial.print(step);
         }
     }
 }
@@ -295,13 +295,13 @@ void batteryDetect()
     // 满 2400
     // 低 1650
     BATvalue = analogRead(BATpin); // 读取ADC电压采集值
-    // Serial.print(BATvalue);
+    Serial.print(BATvalue);
     BATvalue_precent = (BATvalue - 1650) * 100 / 750;
     if (BATvalue_precent > 100)
         BATvalue_precent = 100;
     else if (BATvalue_precent <= 0)
         BATvalue_precent = 0;
-    // Serial.print(BATvalue_precent);
+    Serial.print(BATvalue_precent);
 }
 /**
  * @brief mpu6050进程

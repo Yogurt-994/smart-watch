@@ -14,6 +14,7 @@
 #include <lvgl.h>
 #include <ui_pages/ui.h>
 #include <main.h>
+#include "display.h"
 
 CST816S touch(21, 22, 5, 32); // sda, scl, rst, irq
 
@@ -84,8 +85,8 @@ void lv_example_get_started_1(void)
 
 /**
  * @brief lvgl进程
- * 
- * @param pvParameters 
+ *
+ * @param pvParameters
  */
 void Task_lvgl(void *pvParameters)
 {
@@ -131,6 +132,9 @@ void Task_lvgl(void *pvParameters)
         else if (current_screen == ui_ScreenWeather)
         {
             ui_SrceenWeather_load_data();
+        }
+        else if (current_screen == ui_ScreenRemote)
+        {
         }
         lv_task_handler();
         vTaskDelay(50);

@@ -57,8 +57,8 @@ void ui_ScreenHome_screen_init(void)
     lv_obj_set_style_pad_bottom(ui_ArcElectric, 0, LV_PART_KNOB | LV_STATE_DEFAULT);
 
     ui_LabelElectric = lv_label_create(ui_ArcElectric);
-    lv_obj_set_width(ui_LabelElectric, 40);  
-    lv_obj_set_height(ui_LabelElectric, 16); 
+    lv_obj_set_width(ui_LabelElectric, 40);
+    lv_obj_set_height(ui_LabelElectric, 16);
     lv_obj_set_x(ui_LabelElectric, 0);
     lv_obj_set_y(ui_LabelElectric, -2);
     lv_obj_set_align(ui_LabelElectric, LV_ALIGN_CENTER);
@@ -363,13 +363,14 @@ void ui_SrceenHome_load_data(void)
     const char *charPtr_step = str_step.c_str();
     lv_label_set_text(ui_LabelStep, charPtr_step);
 
-    std::string str_BATvalue_precent = std::to_string(BATvalue_precent)+"%";
+    std::string str_BATvalue_precent = std::to_string(BATvalue_precent) + "%";
     const char *charPtr_BATvalue_precent = str_BATvalue_precent.c_str();
     lv_label_set_text(ui_LabelElectric, charPtr_BATvalue_precent);
-    
-    // std::string str_BATvalue = std::to_string(BATvalue);
-    // const char *charPtr_BATvalue = str_BATvalue.c_str();
-    // lv_label_set_text(ui_LabelElectric, charPtr_BATvalue);
+    lv_arc_set_value(ui_ArcElectric, BATvalue_precent);
+
+    lv_arc_set_value(ui_ArcTem, int_tem);
+    lv_arc_set_value(ui_ArcHum, int_hum);
+    lv_arc_set_value(ui_ArcAQI, int_aqi);
 
     lv_scr_load(ui_ScreenHome);
 }
