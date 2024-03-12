@@ -136,6 +136,10 @@ void Task_lvgl(void *pvParameters)
         else if (current_screen == ui_ScreenRemote)
         {
         }
+        else if (current_screen == ui_ScreenClock)
+        {
+            ui_ScreenClock_load_data();
+        }
         lv_task_handler();
         vTaskDelay(50);
     }

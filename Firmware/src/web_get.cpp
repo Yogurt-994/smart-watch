@@ -8,9 +8,12 @@ WiFiUDP ntpUDP;
 NTPClient timeClient(ntpUDP, "ntp.aliyun.com", 8 * 3600, 60000);
 
 // time
-static int time_hour;
-static int time_minute;
-std::string _time_hour, _time_minute;
+int time_hour;
+int time_minute;
+int time_second;
+std::string _time_hour, _time_minute, _time_second;
+const char *cstr_time;
+// char time[15];
 const char *cstr_hour;
 const char *cstr_minute;
 // date
@@ -78,18 +81,23 @@ void Wifi_Connect()
 void get_local_time()
 {
     // time
+    static std::string time;
     timeClient.update();
     time_hour = timeClient.getHours();
     time_minute = timeClient.getMinutes();
+    time_second = timeClient.getSeconds();
     _time_hour = std::to_string(time_hour);
     if (time_minute < 10)
         _time_minute = "0" + std::to_string(time_minute);
     else
         _time_minute = std::to_string(time_minute);
+    _time_second = std::to_string(time_second);
+    time = _time_hour + ":" + _time_minute + ":" + _time_second;
+    cstr_time = time.c_str();
 
     cstr_hour = _time_hour.c_str();
     cstr_minute = _time_minute.c_str();
-    Serial.println(time_hour);
+    // Serial.println(time_hour);
 
     // week
     static int _week;
@@ -311,13 +319,18 @@ void Task_Wifi(void *pvParameters)
     (void)pvParameters;
     Wifi_Connect();
     timeClient.begin();
+    static int time_flag = 0;
 
     for (;;)
     {
+        time_flag++;
         get_local_time();
-        get_xinzhi_weather();
-        //  delay 30 seconds
-        vTaskDelay(pdMS_TO_TICKS(30000)); // 每隔 30 秒更新一次时间
+        if (time_flag >= 30)
+        {
+            get_xinzhi_weather();
+            time_flag = 0;
+        }
+        vTaskDelay(pdMS_TO_TICKS(1000)); // 每隔 30 秒更新一次时间
     }
 }
 // void Task_Wifi(void *pvParameters)

@@ -47,7 +47,6 @@ lv_obj_t *ui_LabelAQI;
 void ui_ScreenMenu_screen_init(void);
 void ui_event_ScreenMenu(lv_event_t *e);
 lv_obj_t *ui_ScreenMenu;
-lv_obj_t *ui_PanelMenu;
 void ui_event_PanelWeaIcon(lv_event_t *e);
 lv_obj_t *ui_PanelWeaIcon;
 lv_obj_t *ui_ImageWeaIcon;
@@ -64,6 +63,10 @@ void ui_event_PanelCalendarIcon(lv_event_t * e);
 lv_obj_t * ui_PanelCalendarIcon;
 lv_obj_t * ui_ImageCalendarIcon;
 lv_obj_t * ui_LabelCalendarIcon;
+void ui_event_PanelClockIcon(lv_event_t * e);
+lv_obj_t * ui_PanelClockIcon;
+lv_obj_t * ui_ImageClockIcon;
+lv_obj_t * ui_LabelClockIcon;
 
 // SCREEN: ui_ScreenWeather
 void ui_ScreenWeather_screen_init(void);
@@ -128,6 +131,17 @@ void ui_ScreenCalendar_screen_init(void);
 void ui_event_ScreenCalendar(lv_event_t * e);
 lv_obj_t * ui_ScreenCalendar;
 lv_obj_t * ui_Calendar;
+
+
+// SCREEN: ui_ScreenClock
+void ui_ScreenClock_load_data(void);
+void ui_ScreenClock_screen_init(void);
+void ui_event_ScreenClock(lv_event_t * e);
+lv_obj_t * ui_ScreenClock;
+lv_obj_t * ui_ArcSecond;
+lv_obj_t * ui_ArcMinute;
+lv_obj_t * ui_ArcHour;
+lv_obj_t * ui_LabelTime;
 lv_obj_t *ui____initial_actions0;
 const lv_img_dsc_t *ui_imgset_flash[2] = {&ui_img_flash2_png, &ui_img_flash3_png};
 const lv_img_dsc_t *ui_imgset_location[1] = {&ui_img_location2_png};
@@ -220,6 +234,14 @@ void ui_event_PanelAboutIcon(lv_event_t * e)
         _ui_screen_change(&ui_ScreenAbout, LV_SCR_LOAD_ANIM_MOVE_LEFT, 100, 0, &ui_ScreenAbout_screen_init);
     }
 }
+void ui_event_PanelClockIcon(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+    lv_obj_t * target = lv_event_get_target(e);
+    if(event_code == LV_EVENT_CLICKED) {
+        _ui_screen_change(&ui_ScreenClock, LV_SCR_LOAD_ANIM_MOVE_LEFT, 100, 0, &ui_ScreenClock_screen_init);
+    }
+}
 void ui_event_PanelCalendarIcon(lv_event_t * e)
 {
     lv_event_code_t event_code = lv_event_get_code(e);
@@ -258,6 +280,15 @@ void ui_event_ScreenAbout(lv_event_t * e)
     }
 }
 void ui_event_ScreenCalendar(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+    lv_obj_t * target = lv_event_get_target(e);
+    if(event_code == LV_EVENT_GESTURE &&  lv_indev_get_gesture_dir(lv_indev_get_act()) == LV_DIR_RIGHT) {
+        lv_indev_wait_release(lv_indev_get_act());
+        _ui_screen_change(&ui_ScreenMenu, LV_SCR_LOAD_ANIM_MOVE_RIGHT, 100, 0, &ui_ScreenMenu_screen_init);
+    }
+}
+void ui_event_ScreenClock(lv_event_t * e)
 {
     lv_event_code_t event_code = lv_event_get_code(e);
     lv_obj_t * target = lv_event_get_target(e);

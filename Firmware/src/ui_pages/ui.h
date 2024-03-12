@@ -25,7 +25,6 @@ extern "C"
     extern lv_obj_t *ui_LabelElectric;
     extern lv_obj_t *ui_ImageElectric;
     extern lv_obj_t *ui_PanelDate;
-    // extern lv_obj_t *ui_LabelTime;
     extern lv_obj_t *ui_LabelSymbol;
     extern lv_obj_t *ui_LabelHour;
     extern lv_obj_t *ui_LabelMinute;
@@ -34,7 +33,6 @@ extern "C"
     extern lv_obj_t *ui_PanelStep;
     extern lv_obj_t *ui_ImageStep;
     extern lv_obj_t *ui_LabelStep;
-    // void ui_event_SliderStep( lv_event_t * e);
     extern lv_obj_t *ui_SliderStep;
     extern lv_obj_t *ui_PanelWeather;
     void ui_event_ArcTem(lv_event_t *e);
@@ -53,7 +51,6 @@ extern "C"
     void ui_ScreenMenu_screen_init(void);
     void ui_event_ScreenMenu(lv_event_t *e);
     extern lv_obj_t *ui_ScreenMenu;
-    extern lv_obj_t *ui_PanelMenu;
     void ui_event_PanelWeaIcon(lv_event_t *e);
     extern lv_obj_t *ui_PanelWeaIcon;
     extern lv_obj_t *ui_ImageWeaIcon;
@@ -70,6 +67,10 @@ extern "C"
     extern lv_obj_t *ui_PanelCalendarIcon;
     extern lv_obj_t *ui_ImageCalendarIcon;
     extern lv_obj_t *ui_LabelCalendarIcon;
+    void ui_event_PanelClockIcon(lv_event_t *e);
+    extern lv_obj_t *ui_PanelClockIcon;
+    extern lv_obj_t *ui_ImageClockIcon;
+    extern lv_obj_t *ui_LabelClockIcon;
     // SCREEN: ui_ScreenWeather
     void ui_SrceenWeather_load_data(void);
     void ui_ScreenWeather_screen_init(void);
@@ -130,6 +131,15 @@ extern "C"
     void ui_event_ScreenCalendar(lv_event_t *e);
     extern lv_obj_t *ui_ScreenCalendar;
     extern lv_obj_t *ui_Calendar;
+    // SCREEN: ui_ScreenClock
+    void ui_ScreenClock_load_data(void);
+    void ui_ScreenClock_screen_init(void);
+    void ui_event_ScreenClock(lv_event_t *e);
+    extern lv_obj_t *ui_ScreenClock;
+    extern lv_obj_t *ui_ArcSecond;
+    extern lv_obj_t *ui_ArcMinute;
+    extern lv_obj_t *ui_ArcHour;
+    extern lv_obj_t *ui_LabelTime;
     extern lv_obj_t *ui____initial_actions0;
 
     LV_IMG_DECLARE(ui_img_flash3_png);    // assets\flash3.png
@@ -148,6 +158,7 @@ extern "C"
     LV_IMG_DECLARE(ui_img_yogurt_png);    // assets/yogurt.png
     LV_IMG_DECLARE(ui_img_about_png);     // assets/about.png
     LV_IMG_DECLARE(ui_img_calendar_png);  // assets/calendar.png
+    LV_IMG_DECLARE(ui_img_clock_png);     // assets/clock.png
 
     void ui_init(void);
 

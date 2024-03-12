@@ -15,10 +15,14 @@
 #include <Arduino.h>
 #include <main.h>
 
+extern const char *cstr_time;
 extern const char *cstr_hour;
 extern const char *cstr_minute;
 extern const char *cstr_week;
 extern const char *cstr_date;
+extern int time_hour;
+extern int time_minute;
+extern int time_second;
 
 extern int year;
 extern int month;
