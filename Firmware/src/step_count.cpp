@@ -13,6 +13,8 @@
 #include <algorithm>
 #include "step_count.h"
 
+// const int buttonPin3 = 15;
+
 // 初始化电池电量检测端口
 const int BATpin = 39; // ADC，电压传感器
 int BATvalue = 0;      // 用于ADC采集的电压的变量
@@ -295,13 +297,11 @@ void batteryDetect()
     // 满 2400
     // 低 1650
     BATvalue = analogRead(BATpin); // 读取ADC电压采集值
-    Serial.print(BATvalue);
     BATvalue_precent = (BATvalue - 1650) * 100 / 750;
     if (BATvalue_precent > 100)
         BATvalue_precent = 100;
     else if (BATvalue_precent <= 0)
         BATvalue_precent = 0;
-    Serial.print(BATvalue_precent);
 }
 /**
  * @brief mpu6050进程
@@ -324,47 +324,15 @@ void Task_MPU6050(void *pvParameters)
         xTimerStart(step_timer, 0);
         for (;;)
         {
-            // BATvalue = analogRead(BATpin); // 读取ADC电压采集值
-            batteryDetect(); // 电量检测
-            // 测试
-            //  mpu6050.update();
-            //  Serial.println("=======================================================");
-            //  Serial.print(step);
-            //  Serial.print("temp : ");
-            //  Serial.println(mpu6050.getTemp());
-            //  Serial.print("accX : ");
-            //  Serial.print(mpu6050.getAccX());
-            //  Serial.print("\taccY : ");
-            //  Serial.print(mpu6050.getAccY());
-            //  Serial.print("\taccZ : ");
-            //  Serial.println(mpu6050.getAccZ());
-
-            // Serial.print("gyroX : ");
-            // Serial.print(mpu6050.getGyroX());
-            // Serial.print("\tgyroY : ");
-            // Serial.print(mpu6050.getGyroY());
-            // Serial.print("accAngleX : ");
-            // Serial.print(mpu6050.getAccAngleX());
-            // Serial.print("\taccAngleY : ");
-            // Serial.println(mpu6050.getAccAngleY());
-
-            // Serial.print("\tgyroZ : ");
-            // Serial.println(mpu6050.getGyroZ());
-
-            // Serial.print("gyroAngleX : ");
-            // Serial.print(mpu6050.getGyroAngleX());
-            // Serial.print("\tgyroAngleY : ");
-            // Serial.print(mpu6050.getGyroAngleY());
-            // Serial.print("\tgyroAngleZ : ");
-            // Serial.println(mpu6050.getGyroAngleZ());
-
-            // Serial.print("angleX : ");
-            // Serial.print(mpu6050.getAngleX());
-            // Serial.print("\tangleY : ");
-            // Serial.print(mpu6050.getAngleY());
-            // Serial.print("\tangleZ : ");
-            // Serial.println(mpu6050.getAngleZ());
-            // Serial.println("=======================================================\n");
+            batteryDetect();              // 电量检测
+            // if (!digitalRead(buttonPin3))
+            // {
+            //     while (!digitalRead(buttonPin3))
+            //         ;                    // 等待按键松开
+            //     esp_light_sleep_start(); // 进入Light-Sleep模式
+            //     esp_sleep_pd_config(ESP_PD_DOMAIN_RTC_PERIPH, ESP_PD_OPTION_OFF); //停用所有 RTC 外设，即进入Hibernation模式
+            //     Serial.print(1);
+            // }
             vTaskDelay(5000);
         }
     }

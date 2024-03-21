@@ -23,4 +23,3 @@ void ui_ScreenCalendar_screen_init(void)
 
     lv_obj_add_event_cb(ui_ScreenCalendar, ui_event_ScreenCalendar, LV_EVENT_ALL, NULL);
 }
-

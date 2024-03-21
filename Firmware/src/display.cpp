@@ -9,11 +9,6 @@
  *
  */
 
-#include <TFT_eSPI.h>
-#include <CST816S.h>
-#include <lvgl.h>
-#include <ui_pages/ui.h>
-#include <main.h>
 #include "display.h"
 
 CST816S touch(21, 22, 5, 32); // sda, scl, rst, irq
@@ -24,6 +19,8 @@ static const uint16_t screenWidth = 240;
 static const uint16_t screenHeight = 280;
 static lv_disp_draw_buf_t draw_buf;
 static lv_color_t buf[screenWidth * 10];
+
+lv_obj_t *current_screen = ui_ScreenHome;
 
 void my_disp_flush(lv_disp_drv_t *disp, const lv_area_t *area, lv_color_t *color_p)
 {
@@ -47,10 +44,10 @@ void my_touchpad_read(lv_indev_drv_t *indev_driver, lv_indev_data_t *data)
         /*Set the coordinates*/
         data->point.x = touch.data.x;
         data->point.y = touch.data.y;
-        Serial.print("Data x ");
-        Serial.println(touch.data.x);
-        Serial.print("Data y ");
-        Serial.println(touch.data.y);
+        // Serial.print("Data x ");
+        // Serial.println(touch.data.x);
+        // Serial.print("Data y ");
+        // Serial.println(touch.data.y);
     }
     else
     {
@@ -116,12 +113,11 @@ void Task_lvgl(void *pvParameters)
     indev_drv.read_cb = my_touchpad_read;
     lv_indev_drv_register(&indev_drv);
 
-    /*编写代码*/
     ui_init();
 
     for (;;)
     {
-        lv_obj_t *current_screen = lv_scr_act();
+        current_screen = lv_scr_act();
         if (current_screen == ui_ScreenHome)
         {
             ui_SrceenHome_load_data();
@@ -140,7 +136,15 @@ void Task_lvgl(void *pvParameters)
         {
             ui_ScreenClock_load_data();
         }
+        else if (current_screen == ui_ScreenCalendar)
+        {
+        }
+        else if (current_screen == ui_ScreenStopwatch)
+        {
+            ui_ScreenStopwatch_load_data();
+        }
+
         lv_task_handler();
-        vTaskDelay(50);
+        vTaskDelay(200);
     }
 }

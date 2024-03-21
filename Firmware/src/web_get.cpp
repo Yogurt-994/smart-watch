@@ -17,7 +17,7 @@ const char *cstr_time;
 const char *cstr_hour;
 const char *cstr_minute;
 // date
-int day, month, year;
+int day = 14, month = 3, year = 2024;
 std::string date;
 const char *cstr_date;
 // week
@@ -49,7 +49,9 @@ const char *cstr_wea_day_tem2;
 
 // 心知天气api
 // String apikey = "SCip88i9pJcY90FZ0";
-String apikey = "SzP5qUH8j8QEPdl7a";
+// String apikey = "SzP5qUH8j8QEPdl7a";
+// String apikey = "PEkQrBsy0ZZZUIUzG";
+String apikey = "S1WAxK3cS3u1HSjyv";
 String cityid = "wuhan";
 
 DynamicJsonDocument docWeather(1000);
@@ -333,47 +335,3 @@ void Task_Wifi(void *pvParameters)
         vTaskDelay(pdMS_TO_TICKS(1000)); // 每隔 30 秒更新一次时间
     }
 }
-// void Task_Wifi(void *pvParameters)
-// {
-//     (void)pvParameters;
-//     for (;;)
-//     {
-//         // 等待事件位，只有 EVENT_BIT_TASK_WIFI 被设置时才执行
-//         // bits_wifi_ble = xEventGroupWaitBits(switch_event_group, EVENT_BIT_TASK_WIFI, pdTRUE, pdTRUE, portMAX_DELAY);
-//         Serial.print(bits_wifi_ble);
-//         Wifi_Connect();
-//         timeClient.begin();
-//         while (bits_wifi_ble == EVENT_BIT_TASK_WIFI)
-//         {
-//             Serial.print("wifi");
-//             get_local_time();
-//             // Serial.print("wifi2");
-//             // get_xinzhi_weather();
-//             // Serial.print("wifi3");
-//             vTaskDelay(pdMS_TO_TICKS(30000)); // 每隔 30 秒更新一次时间
-//         }
-//         // WiFi.disconnect();
-//     }
-//     // for (;;)
-//     // {
-//     //     // xQueueReceive(switchQueue, &isWifiOrBle, portMAX_DELAY);
-//     //     if (isWifiOrBle == true)
-//     //     {
-//     //         Wifi_Connect();
-//     //         timeClient.begin();
-
-//     //         while(isWifiOrBle == true)
-//     //         {
-//     //             Serial.print("wifi");
-//     //             get_local_time();
-//     //             get_xinzhi_weather();
-//     //             vTaskDelay(pdMS_TO_TICKS(30000)); // 每隔 30 秒更新一次时间
-//     //         }
-//     //     }
-//     //     else
-//     //     {
-//     //         WiFi.disconnect();
-//     //         vTaskDelay(pdMS_TO_TICKS(30000)); // 每隔 30 秒更新一次时间
-//     //     }
-//     // }
-// }

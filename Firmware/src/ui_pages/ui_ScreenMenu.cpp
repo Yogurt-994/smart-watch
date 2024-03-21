@@ -8,6 +8,7 @@
 void ui_ScreenMenu_screen_init(void)
 {
     ui_ScreenMenu = lv_obj_create(NULL);
+    lv_obj_add_flag(ui_ScreenMenu, LV_OBJ_FLAG_SCROLL_WITH_ARROW | LV_OBJ_FLAG_SCROLL_ONE);     /// Flags
     lv_obj_set_style_bg_color(ui_ScreenMenu, lv_color_hex(0x000000), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_bg_opa(ui_ScreenMenu, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
 
@@ -105,7 +106,7 @@ void ui_ScreenMenu_screen_init(void)
     lv_obj_set_width(ui_PanelRemoteIcon, 240);
     lv_obj_set_height(ui_PanelRemoteIcon, 70);
     lv_obj_set_x(ui_PanelRemoteIcon, 0);
-    lv_obj_set_y(ui_PanelRemoteIcon, 98);
+    lv_obj_set_y(ui_PanelRemoteIcon, 168);
     lv_obj_set_align(ui_PanelRemoteIcon, LV_ALIGN_CENTER);
     lv_obj_clear_flag(ui_PanelRemoteIcon, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
     lv_obj_set_style_bg_color(ui_PanelRemoteIcon, lv_color_hex(0x000000), LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -135,7 +136,7 @@ void ui_ScreenMenu_screen_init(void)
     lv_obj_set_width(ui_PanelAboutIcon, 240);
     lv_obj_set_height(ui_PanelAboutIcon, 70);
     lv_obj_set_x(ui_PanelAboutIcon, 0);
-    lv_obj_set_y(ui_PanelAboutIcon, 165);
+    lv_obj_set_y(ui_PanelAboutIcon, 239);
     lv_obj_set_align(ui_PanelAboutIcon, LV_ALIGN_CENTER);
     lv_obj_clear_flag(ui_PanelAboutIcon, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
     lv_obj_set_scrollbar_mode(ui_PanelAboutIcon, LV_SCROLLBAR_MODE_OFF);
@@ -162,11 +163,43 @@ void ui_ScreenMenu_screen_init(void)
     lv_obj_set_style_text_align(ui_LabelAboutIcon, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_LabelAboutIcon, &lv_font_montserrat_24, LV_PART_MAIN | LV_STATE_DEFAULT);
 
+    ui_PanelStopwatchIcon = lv_obj_create(ui_ScreenMenu);
+    lv_obj_set_width(ui_PanelStopwatchIcon, 240);
+    lv_obj_set_height(ui_PanelStopwatchIcon, 70);
+    lv_obj_set_x(ui_PanelStopwatchIcon, 0);
+    lv_obj_set_y(ui_PanelStopwatchIcon, 98);
+    lv_obj_set_align(ui_PanelStopwatchIcon, LV_ALIGN_CENTER);
+    lv_obj_clear_flag(ui_PanelStopwatchIcon, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_set_style_bg_color(ui_PanelStopwatchIcon, lv_color_hex(0x000000), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui_PanelStopwatchIcon, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+
+    ui_ImageStopwatchIcon = lv_img_create(ui_PanelStopwatchIcon);
+    lv_img_set_src(ui_ImageStopwatchIcon, &ui_img_stopwatch_png);
+    lv_obj_set_width(ui_ImageStopwatchIcon, 48);
+    lv_obj_set_height(ui_ImageStopwatchIcon, 48);
+    lv_obj_set_x(ui_ImageStopwatchIcon, -76);
+    lv_obj_set_y(ui_ImageStopwatchIcon, -2);
+    lv_obj_set_align(ui_ImageStopwatchIcon, LV_ALIGN_CENTER);
+    lv_obj_add_flag(ui_ImageStopwatchIcon, LV_OBJ_FLAG_ADV_HITTEST);     /// Flags
+    lv_obj_clear_flag(ui_ImageStopwatchIcon, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+
+    ui_LabelStopwatchIcon = lv_label_create(ui_PanelStopwatchIcon);
+    lv_obj_set_width(ui_LabelStopwatchIcon, 163);
+    lv_obj_set_height(ui_LabelStopwatchIcon, 24);
+    lv_obj_set_x(ui_LabelStopwatchIcon, 22);
+    lv_obj_set_y(ui_LabelStopwatchIcon, -5);
+    lv_obj_set_align(ui_LabelStopwatchIcon, LV_ALIGN_CENTER);
+    lv_label_set_text(ui_LabelStopwatchIcon, "StopWatch");
+    lv_obj_set_style_text_align(ui_LabelStopwatchIcon, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui_LabelStopwatchIcon, &lv_font_montserrat_24, LV_PART_MAIN | LV_STATE_DEFAULT);
+
     lv_obj_add_event_cb(ui_PanelWeaIcon, ui_event_PanelWeaIcon, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_PanelCalendarIcon, ui_event_PanelCalendarIcon, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_PanelClockIcon, ui_event_PanelClockIcon, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_PanelRemoteIcon, ui_event_PanelRemoteIcon, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_PanelAboutIcon, ui_event_PanelAboutIcon, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_PanelStopwatchIcon, ui_event_PanelStopwatchIcon, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_ScreenMenu, ui_event_ScreenMenu, LV_EVENT_ALL, NULL);
 
 }
+

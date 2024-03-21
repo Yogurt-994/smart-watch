@@ -18,7 +18,7 @@
 
 #define ABS(a) (0 - (a)) > 0 ? (-(a)) : (a)   //取a的绝对值
 #define SAMPLE_NUM                10          //采样10次取平均值
-#define MIN_RELIABLE_VARIATION    100         //最小可信赖变化量
+#define MIN_RELIABLE_VARIATION    200         //最小可信赖变化量
 #define MAX_RELIABLE_VARIATION    2000        //最大可信赖变化量
 
 #define ACTIVE_NUM          30            //最活跃轴更新周期

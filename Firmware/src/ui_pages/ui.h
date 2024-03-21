@@ -12,9 +12,10 @@ extern "C"
 #endif
 
 #include "lvgl.h"
-// #include "..main.h"
 #include "ui_helpers.h"
 #include "ui_events.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/timers.h"
     // SCREEN: ui_ScreenHome
     void ui_SrceenHome_load_data(void);
     void ui_ScreenHome_screen_init(void);
@@ -71,6 +72,10 @@ extern "C"
     extern lv_obj_t *ui_PanelClockIcon;
     extern lv_obj_t *ui_ImageClockIcon;
     extern lv_obj_t *ui_LabelClockIcon;
+    void ui_event_PanelStopwatchIcon(lv_event_t *e);
+    extern lv_obj_t *ui_PanelStopwatchIcon;
+    extern lv_obj_t *ui_ImageStopwatchIcon;
+    extern lv_obj_t *ui_LabelStopwatchIcon;
     // SCREEN: ui_ScreenWeather
     void ui_SrceenWeather_load_data(void);
     void ui_ScreenWeather_screen_init(void);
@@ -107,6 +112,23 @@ extern "C"
     extern lv_obj_t *ui_LabelTomWea;
     extern lv_obj_t *ui_LabelTodayTem;
     extern lv_obj_t *ui_LabelTomTem;
+    // SCREEN: ui_ScreenStopwatch
+    void ui_ScreenStopwatch_screen_init(void);
+    void ui_ScreenStopwatch_load_data(void);
+    void ui_event_SwitchStop(lv_event_t *e);
+    void ui_event_ScreenStopwatch(lv_event_t *e);
+    void ui_event_ImgButtonAgain(lv_event_t *e);
+    void stop_watch_callback(TimerHandle_t pxTimer);
+    extern int stop_watch_second;
+    extern int stop_watch_minute;
+    extern char stop_time_print[6];
+    extern TimerHandle_t stop_watch;
+    extern lv_obj_t *ui_ScreenStopwatch;
+    extern lv_obj_t *ui_ArcMin;
+    extern lv_obj_t *ui_ArcSec;
+    extern lv_obj_t *ui_LabelStopTime;
+    extern lv_obj_t *ui_SwitchStop;
+    extern lv_obj_t *ui_ImgButtonAgain;
     // SCREEN: ui_ScreenRemote
     void ui_ScreenRemote_screen_init(void);
     void ui_event_ScreenRemote(lv_event_t *e);
@@ -159,6 +181,9 @@ extern "C"
     LV_IMG_DECLARE(ui_img_about_png);     // assets/about.png
     LV_IMG_DECLARE(ui_img_calendar_png);  // assets/calendar.png
     LV_IMG_DECLARE(ui_img_clock_png);     // assets/clock.png
+    LV_IMG_DECLARE(ui_img_stopwatch_png); // assets/stopwatch.png
+    LV_IMG_DECLARE(ui_img_again2_png);    // assets/again2.png
+    LV_IMG_DECLARE(ui_img_next3_png);     // assets/NEXT3.png
 
     void ui_init(void);
 
