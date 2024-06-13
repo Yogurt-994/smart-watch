@@ -51,7 +51,7 @@ const char *cstr_wea_day_tem2;
 // String apikey = "SCip88i9pJcY90FZ0";
 // String apikey = "SzP5qUH8j8QEPdl7a";
 // String apikey = "PEkQrBsy0ZZZUIUzG";
-String apikey = "S1WAxK3cS3u1HSjyv";
+String apikey = "Sk5tKvemYlo_tZ1vl";
 String cityid = "wuhan";
 
 DynamicJsonDocument docWeather(1000);
